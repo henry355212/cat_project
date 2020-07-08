@@ -267,6 +267,7 @@
 
 	/* Buttons */
 		
+	
 	.button
 	{
 		position: relative;
@@ -297,7 +298,13 @@
 /* Powered by Font Awesome by Dave Gandy | http://fontawesome.io                 */
 /* Licensed under the SIL OFL 1.1 (font), MIT (CSS)                              */
 /*********************************************************************************/
-
+.fig {
+	float: left;
+	/* border:1px solid blue; */
+	width: 120px;
+	padding-right: 20px;
+	padding-left: 0px;
+      }
 	.fa
 	{
 		text-decoration: none;
