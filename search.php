@@ -40,7 +40,7 @@
           $name 您好，您的帳號資料如下：<br><br>
           　　帳號：$account<br>
           　　密碼：$password<br><br>
-            <a href='http://localhost/ch17/index.html'>按此登入本站</a>
+            <a href='http://localhost/cat_project/no-sidebar.html'>按此重新登入本站</a>
           </body>
       </html>
     ";
@@ -49,16 +49,16 @@
     {
       echo $message;   //顯示訊息告知使用者帳號密碼
     }
-    else
-    {
-      $subject = "=?utf-8?B?" . base64_encode("帳號通知") . "?=";
-      $headers  = "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\n";
-      mail($email, $subject, $message, $headers);	
+    //else
+    //{
+      //$subject = "=?utf-8?B?" . base64_encode("帳號通知") . "?=";
+      //$headers  = "MIME-Version: 1.0\r\nContent-type: text/html; charset=utf-8\r\n";
+      //mail($email, $subject, $message, $headers);	
 
       //顯示訊息告知帳號密碼已寄至其電子郵件了
-      echo "$name 您好，您的帳號資料已經寄至 $email<br><br>
-            <a href='index.html'>按此登入本站</a>";				
-    }
+      //echo "$name 您好，您的帳號資料已經寄至 $email<br><br>
+            //<a href='index.html'>按此登入本站</a>";				
+    //}
   }
 
   //釋放 $result 佔用的記憶體
