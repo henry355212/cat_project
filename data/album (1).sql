@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-07-15 07:39:05
+-- 產生時間： 2020-07-16 10:24:22
 -- 伺服器版本： 8.0.20
 -- PHP 版本： 7.3.19
 
@@ -41,8 +41,10 @@ CREATE TABLE `album` (
 --
 
 INSERT INTO `album` (`id`, `name`, `owner`) VALUES
-(2, '布拉格', 'guest'),
-(1, '維也納', 'guest');
+(3, 'guest_cat', 'guest'),
+(7, 'angela_cat', 'angela'),
+(6, 'shangxi_cat', 'shangxi'),
+(8, 'henry_cat', 'henry');
 
 -- --------------------------------------------------------
 
@@ -64,15 +66,24 @@ CREATE TABLE `photo` (
 --
 
 INSERT INTO `photo` (`id`, `name`, `filename`, `comment`, `album_id`) VALUES
-(142, 'IMG_0084.JPG', '57be72b12fbb0.jpg', NULL, 1),
-(141, 'IMG_0086.JPG', '57be71ce3b56c.jpg', '天文鐘', 2),
-(140, 'IMG_0098 (3).JPG', '57be71cd6ddd7.jpg', NULL, 2),
-(139, 'P_20160720_132256.jpg', '57be71ccbcb68.jpg', '布拉格查爾斯橋', 2),
-(138, 'P_20160720_135641.jpg', '57be71cc1c0f3.jpg', NULL, 2),
-(137, 'IMG_0152.JPG', '57be712335cc3.jpg', NULL, 1),
-(136, 'IMG_0049 (2).JPG', '57be7122573b9.jpg', NULL, 1),
-(135, 'IMG_0022.JPG', '57be71218d2d5.jpg', NULL, 1),
-(134, 'IMG_0006.JPG', '57be71209a58f.jpg', NULL, 1);
+(177, 'pexels-photo-1436008.jpg', '5f0fbee6b1fd1.jpg', NULL, 5),
+(178, 'pexels-photo-2643812.jpg', '5f0fbee6b819c.jpg', NULL, 5),
+(179, 'pexels-photo-2655024.jpg', '5f0fbee6bcc76.jpg', NULL, 5),
+(180, 'pexels-photo-3687480.jpg', '5f0fbee6c2242.jpg', NULL, 5),
+(190, 'pexels-photo-406629.jpg', '5f0fc1e1f183c.jpg', NULL, 8),
+(189, 'pexels-photo-1378413.jpg', '5f0fc1dbb19df.jpg', NULL, 8),
+(183, 'pexels-photo-3687480.jpg', '5f0fc1b1287ac.jpg', NULL, 7),
+(184, 'pexels-photo-2655024.jpg', '5f0fc1b12fcf6.jpg', NULL, 7),
+(185, 'pexels-photo-2643812.jpg', '5f0fc1b13554b.jpg', NULL, 7),
+(186, 'pexels-photo-1436008.jpg', '5f0fc1b13a011.jpg', NULL, 7),
+(187, 'pexels-photo-977935.jpg', '5f0fc1dba3eaa.jpg', '我超可愛', 8),
+(188, 'pexels-photo-1056252.jpg', '5f0fc1dbaadb7.jpg', NULL, 8),
+(182, 'pexels-photo-4123992.jpg', '5f0fc0aa68bc8.jpg', NULL, 6),
+(181, 'pexels-photo-4081076.jpg', '5f0fc0aa61e7c.jpg', NULL, 6),
+(172, 'pexels-photo-172420.jpg', '5f0fbb8745612.jpg', NULL, 3),
+(171, 'pexels-photo-171227.jpg', '5f0fbb8740c42.jpg', NULL, 3),
+(170, 'pexels-photo-126407.jpg', '5f0fbb873cb90.jpg', NULL, 3),
+(169, 'pexels-photo-121920.jpg', '5f0fbb8732da7.jpg', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -103,7 +114,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `account`, `password`, `name`, `sex`, `year`, `month`, `day`, `telephone`, `cellphone`, `address`, `email`, `url`, `comment`) VALUES
-(1, 'guest', 'guest', '阿凱', '男', 80, 6, 24, '(02) 2368-5978', '(0968) 568-854', '台北市大安區師大路 20 號', 'kai@ms17.url.com.tw', 'http://www.kai.com.tw', '這是 guest 帳號');
+(1, 'guest', 'guest', '阿凱', '男', 80, 6, 24, '(02) 2368-5978', '(0968) 568-854', '台北市大安區師大路 20 號', 'guest@ms17.url.com.tw', 'http://www.kai.com.tw', '這是 guest 帳號'),
+(2, 'henry', '123456', 'henry', '男', 109, 7, 9, '0912123123', '0912123123', '台北市信義區復興南路', 'henry123456@gmail.com', '', ''),
+(3, 'angela', '123456', 'angela', '女', 109, 7, 9, '0912123123', '0912123123', '台北市信義區復興南路', 'angela123456@gmail.com', '', ''),
+(4, 'shangxi', '123456', 'shangxi', '男', 109, 7, 9, '0912123123', '0912123123', '台北市信義區復興南路', 'shangxi123456@gmail.com', '', '');
 
 --
 -- 已傾印資料表的索引
@@ -136,13 +150,13 @@ ALTER TABLE `users`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
