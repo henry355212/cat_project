@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
+<<<<<<< HEAD:data/album.sql
 -- 產生時間： 2020-07-16 10:07:29
+=======
+-- 產生時間： 2020-07-16 10:24:22
+>>>>>>> d754ff917e6642f3613967f597137f8dda824489:data/album (1).sql
 -- 伺服器版本： 8.0.20
 -- PHP 版本： 7.3.19
 
@@ -45,6 +49,7 @@ INSERT INTO `album` (`id`, `name`, `owner`) VALUES
 (7, 'angela_cat', 'angela'),
 (6, 'shangxi_cat', 'shangxi'),
 (8, 'henry_cat', 'henry');
+<<<<<<< HEAD:data/album.sql
 
 -- --------------------------------------------------------
 
@@ -84,6 +89,8 @@ INSERT INTO `message` (`id`, `name`, `subject`, `content`, `date`) VALUES
 (47, 'eric31415', '尋貓 花蓮 太昌', '名字：點點\r\n性別：男生\r\n年齡：1歲半\r\n個性：怕生、會認名字\r\n特徵：背上有白色的點、走失時有帶灰色項圈且有名牌\r\n走失時間：5/31凌晨四點\r\n走失地點：太昌 明義七街99巷\r\n如有任何發現煩請聯絡：劉小姐0938709393\r\n感謝各位協助！\r\n', '2020-07-15 05:29:54'),
 (48, '三花很可以', '溫差大怎麼讓貓咪更舒服', '我之前沒什麼養貓咪的經驗，大多接觸狗狗比較多，\r\n最近朋友要出差3.4天，把貓咪的照顧托給了我。(貓咪在原住家)\r\n但因為最近天氣一下冷一下熱的，一下大雨、一下又高溫...\r\n我都是早晚各去看貓咪一趟，都很神經質的一直看水的狀況，\r\n深怕他喝少了... :(', '2020-07-15 08:40:02'),
 (49, '阿凱', ' Geliebte Katze 歐洲最受歡迎的貓雜誌', 'Geliebte Katze 於1993年開始發售 目前仍然是歐洲最受歡迎的貓雜誌\r\n語言:德文\r\n這本雜誌專門以\"貓\"為主題去探討\r\n也常常有許多貓咪相關創作者的撰寫文章介紹\r\n還有活動(例如之前就跟知名作者Jessica Kremser一起宣傳新書)', '2020-07-16 07:32:27');
+=======
+>>>>>>> d754ff917e6642f3613967f597137f8dda824489:data/album (1).sql
 
 -- --------------------------------------------------------
 
@@ -115,7 +122,11 @@ INSERT INTO `photo` (`id`, `name`, `filename`, `comment`, `album_id`) VALUES
 (184, 'pexels-photo-2655024.jpg', '5f0fc1b12fcf6.jpg', NULL, 7),
 (185, 'pexels-photo-2643812.jpg', '5f0fc1b13554b.jpg', NULL, 7),
 (186, 'pexels-photo-1436008.jpg', '5f0fc1b13a011.jpg', NULL, 7),
+<<<<<<< HEAD:data/album.sql
 (187, 'pexels-photo-977935.jpg', '5f0fc1dba3eaa.jpg', NULL, 8),
+=======
+(187, 'pexels-photo-977935.jpg', '5f0fc1dba3eaa.jpg', '我超可愛', 8),
+>>>>>>> d754ff917e6642f3613967f597137f8dda824489:data/album (1).sql
 (188, 'pexels-photo-1056252.jpg', '5f0fc1dbaadb7.jpg', NULL, 8),
 (182, 'pexels-photo-4123992.jpg', '5f0fc0aa68bc8.jpg', NULL, 6),
 (181, 'pexels-photo-4081076.jpg', '5f0fc0aa61e7c.jpg', NULL, 6),
@@ -123,6 +134,7 @@ INSERT INTO `photo` (`id`, `name`, `filename`, `comment`, `album_id`) VALUES
 (171, 'pexels-photo-171227.jpg', '5f0fbb8740c42.jpg', NULL, 3),
 (170, 'pexels-photo-126407.jpg', '5f0fbb873cb90.jpg', NULL, 3),
 (169, 'pexels-photo-121920.jpg', '5f0fbb8732da7.jpg', NULL, 3);
+<<<<<<< HEAD:data/album.sql
 
 -- --------------------------------------------------------
 
@@ -150,6 +162,8 @@ INSERT INTO `reply_message` (`id`, `name`, `subject`, `content`, `date`, `reply_
 (12, '阿山', '貓咪', '喵喵喵', '2020-07-10 09:09:28', 39),
 (13, '阿凱', '求解 小貓的行為如何改善', '吃飯', '2020-07-16 08:06:09', 43),
 (14, '阿凱', '求解 小貓的行為如何改善', '找東西吃', '2020-07-16 08:10:49', 43);
+=======
+>>>>>>> d754ff917e6642f3613967f597137f8dda824489:data/album (1).sql
 
 -- --------------------------------------------------------
 
@@ -235,12 +249,15 @@ ALTER TABLE `message`
 --
 ALTER TABLE `photo`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+<<<<<<< HEAD:data/album.sql
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `reply_message`
 --
 ALTER TABLE `reply_message`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+=======
+>>>>>>> d754ff917e6642f3613967f597137f8dda824489:data/album (1).sql
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
