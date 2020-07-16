@@ -11,7 +11,7 @@
 					
   //檢查帳號密碼是否正確
   $sql = "SELECT * FROM users Where account = '$account' AND password = '$password'";
-  $result = execute_sql($link, "member", $sql);
+  $result = execute_sql($link, "album", $sql);
 
   //如果帳號密碼錯誤
   if (mysqli_num_rows($result) == 0)

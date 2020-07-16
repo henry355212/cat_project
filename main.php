@@ -1,64 +1,20 @@
 <?php
-require_once("dbtools.inc.php");
+//檢查 cookie 中的 passed 變數是否等於 TRUE
+$passed = $_COOKIE["passed"];
 
-//取得表單資料
-$account = $_POST["account"];
-$password = $_POST["password"];
-$name = $_POST["name"];
-$sex = $_POST["sex"];
-$year = $_POST["year"];
-$month = $_POST["month"];
-$day = $_POST["day"];
-$telephone = $_POST["telephone"];
-$cellphone = $_POST["cellphone"];
-$address = $_POST["address"];
-$email = $_POST["email"];
-$url = $_POST["url"];
-$comment = $_POST["comment"];
-
-//建立資料連接
-$link = create_connection();
-
-//檢查帳號是否有人申請
-$sql = "SELECT * FROM users Where account = '$account'";
-$result = execute_sql($link, "album", $sql);
-
-//如果帳號已經有人使用
-if (mysqli_num_rows($result) != 0) {
-  //釋放 $result 佔用的記憶體
-  mysqli_free_result($result);
-
-  //顯示訊息要求使用者更換帳號名稱
-  echo "<script type='text/javascript'>";
-  echo "alert('您所指定的帳號已經有人使用，請使用其它帳號');";
-  echo "history.back();";
-  echo "</script>";
+/*  如果 cookie 中的 passed 變數不等於 TRUE
+      表示尚未登入網站，將使用者導向首頁 index.html	*/
+if ($passed != "TRUE") {
+  header("location:main.html");
+  exit();
 }
-
-//如果帳號沒人使用
-else {
-  //釋放 $result 佔用的記憶體	
-  mysqli_free_result($result);
-
-  //執行 SQL 命令，新增此帳號
-  $sql = "INSERT INTO users (account, password, name, sex, 
-            year, month, day, telephone, cellphone, address,
-            email, url, comment) VALUES ('$account', '$password', 
-            '$name', '$sex', $year, $month, $day, '$telephone', 
-            '$cellphone', '$address', '$email', '$url', '$comment')";
-
-  $result = execute_sql($link, "album", $sql);
-}
-
-//關閉資料連接	
-mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+  <title>會員管理</title>
   <meta charset="utf-8">
-  <title>註冊成功</title>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
@@ -93,7 +49,7 @@ mysqli_close($link);
 
       <!-- Logo -->
       <div id="logo">
-        <font face="標楷體" font size="20px" font color="white"></font>
+        <font face="標楷體" font size="20px" font color="white">會員專區</font>
       </div>
     </div>
   </div>
@@ -104,13 +60,17 @@ mysqli_close($link);
     <div id="content" class="container">
       <section>
         <header>
+          <!-- <p align="center"><img src="images/management.jpg"></p> -->
+          <p align="center">
+            <a href="modify.php">修改會員資料</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="delete.php">刪除會員資料</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="right-sidebar.php">曬貓區</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="forum.html">貓奴討論區</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="logout.php">登出網站</a>
+          </p>
+        </header>
 
-          <p align="center"><img src="images/Success.jpg">
-            <p align="center">恭喜您已經註冊成功了，您的資料如下：（請勿按重新整理鈕）<br>
-              帳號：<font color="#FF0000"><?php echo $account ?></font><br>
-              密碼：<font color="#FF0000"><?php echo $password ?></font><br>
-              請記下您的帳號及密碼，然後<a href="right-sidebar.php">登入網站</a>。
-            </p>
+
       </section>
     </div>
   </div>
@@ -151,7 +111,6 @@ mysqli_close($link);
       Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
     </div>
   </div>
-
 
 </body>
 
