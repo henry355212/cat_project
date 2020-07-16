@@ -43,7 +43,7 @@
         <ul>
           <li><a href="index.html">主頁</a></li>
           <li><a href="left-sidebar.html">品種介紹</a></li>
-          <li class="active"><a href="right-sidebar.php">曬貓區</a></li>
+          <li class="active"><a href="right-sidebar.html">曬貓區</a></li>
           <li><a href="forum.php">貓奴討論區</a></li>
           <li><a href="no-sidebar.html">會員登入</a></li>
           <li><a href="related-websites.html">相關網站</a></li>
@@ -115,17 +115,17 @@
     echo "<hr>";
     echo "<table width='800' align='center' cellpadding='3'>";
     echo "<tr height='40'><td colspan='2' align='center'
-              bgcolor='#99CCFF'><font color='#FF3366'>
+              bgcolor='#A6A6D2'><font color='#FF3366'>
               <b>回覆主題</b></font></td></tr>";
 
     //顯示回覆主題的內容
     while ($row = mysqli_fetch_assoc($result)) {
       echo "<tr>";
-      echo "<td bgcolor='#FFFF99'>主題：" . $row["subject"] . "　";
+      echo "<td bgcolor='#E6E6F2'>主題：" . $row["subject"] . "　";
       // echo "作者：" . $row["author"] . "　";
       echo "作者：" . $row["name"] . "　";
       echo "時間：" . $row["date"] . "</td></tr>";
-      echo "<tr><td bgcolor='CCFFFF'>";
+      echo "<tr><td bgcolor='#C7C7E2'>";
       echo $row["content"] . "</td></tr>";
     }
 
@@ -136,7 +136,7 @@
   mysqli_free_result($result);
   mysqli_close($link);
   ?>
-  
+
   <hr>
   <form name="myForm" method="post" action="post_reply.php">
     <!-- <input type="hidden" name="reply_id" value="<?php echo $id ?>"> -->
