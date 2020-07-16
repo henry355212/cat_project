@@ -3,7 +3,8 @@
   {
     require_once("dbtools.inc.php");
     $album_name = $_POST["album_name"];
-  	
+	  
+	
     //取得登入者帳號
     session_start();
     $login_users = $_SESSION["login_users"];
