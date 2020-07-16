@@ -1,67 +1,56 @@
 <?php
-  //檢查 cookie 中的 passed 變數是否等於 TRUE
-  $passed = $_COOKIE["passed"];
-	
-  /* 如果 cookie 中的 passed 變數不等於 TRUE，
-     表示尚未登入網站，將使用者導向首頁 index.html */
-  if ($passed != "TRUE")
-  {
-    header("location:index.html");
-    exit();
-  }
-	
-  /* 如果 cookie 中的 passed 變數等於 TRUE，
-     表示已經登入網站，則取得使用者資料 */
-  else
+  if (isset($_POST["album_name"]))
   {
     require_once("dbtools.inc.php");
-	
-    //取得 modify.php 網頁的表單資料
-    $id = $_COOKIE["id"];
-    $password = $_POST["password"];
-    $name = $_POST["name"];
-    $sex = $_POST["sex"];
-    $year = $_POST["year"];
-    $month = $_POST["month"];
-    $day = $_POST["day"];
-    $telephone = $_POST["telephone"];
-    $cellphone = $_POST["cellphone"];
-    $address = $_POST["address"];
-    $email = $_POST["email"];
-    $url = $_POST["url"];
-    $comment = $_POST["comment"];
-		
+    $album_name = $_POST["album_name"];
+  	
+    //取得登入者帳號
+    session_start();
+    $login_users = $_SESSION["login_users"];
+
     //建立資料連接
     $link = create_connection();
-				
-    //執行 UPDATE 陳述式來更新使用者資料
-    $sql = "UPDATE users SET password = '$password', name = '$name', 
-            sex = '$sex', year = $year, month = $month, day = $day, 
-            telephone = '$telephone', cellphone = '$cellphone', 
-            address = '$address', email = '$email', url = '$url', 
-            comment = '$comment' WHERE id = $id";
+
+    //新增相簿
+
+    $sql = "SELECT ifnull(max(id), 0) + 1 AS album_id FROM album";
     $result = execute_sql($link, "album", $sql);
-		
-    //關閉資料連接
+    $album_id = mysqli_fetch_object($result)->album_id;
+
+    $sql = "INSERT INTO album(id, name, owner)
+      VALUES($album_id, '$album_name', '$login_users')";
+
+    execute_sql($link, "album", $sql);
+  	
+    //釋放記憶體並關閉資料連接
+    mysqli_free_result($result);
     mysqli_close($link);
-  }		
+    
+    header("location:showAlbum.php?album_id=$album_id");
+  }
 ?>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>修改會員資料成功</title>
-    <meta charset="utf-8">    
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>新增相簿</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="js/skel.min.js"></script>
 	<script src="js/skel-panels.min.js"></script>
-	<script src="js/init.js"></script>
+  <script src="js/init.js"></script>
+  <noscript>
+		<link rel="stylesheet" href="css/skel-noscript.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/style-desktop.css" />
+	</noscript>
   </head>
   <body>
-  <div id="header">
+	
+  <!-- Header -->
+	<div id="header">
 		<div id="nav-wrapper">
 			<!-- Nav -->
 			<nav id="nav">
@@ -79,7 +68,7 @@
 
 			<!-- Logo -->
 			<div id="logo">
-				<font face="標楷體" font size="20px" font color="white"></font>
+				<font face="標楷體" font size="20px" font color="white">新增相簿</font>
 			</div>
 		</div>
 	</div>
@@ -90,12 +79,27 @@
 		<div id="content" class="container">
 			<section>
 				<header>
-        <center>
-      <img src="images/revise.jpg"><br><br>
-      <?php echo $name ?>，恭喜您已經修改資料成功了。
-      <p><a href="main.php">回會員專屬網頁</a></p>
-    </center> 
-				</header>
+          <div align="center">
+    <form action="addAlbum.php" method="post">
+      <table align="center">
+        <tr> 
+          <td> 
+            相簿名稱：
+          </td>
+          <td>
+            <input type="text" name="album_name" size="15">
+            <input type="submit" value="新增">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3" align="center">
+            <br><a href="right-sidebar.php">回曬貓區</a>
+          </td>	
+        </tr>
+      </table>
+    </form>
+</div>
+    </header>
 
 
 			</section>
@@ -122,10 +126,10 @@
 					<h2>聯絡我們</h2>					
 				</header>
 				<ul class="contact">
-				<ul class="contact">
 					<a href ="mailto:toms-no-reply@iii.org.tw"><img src="images/email.png" width="100px" height="100px"></a>			
 				</ul>
-				<a href ="mailto:toms-no-reply@iii.org.tw"><font color="white" size="5px"><u>toms-no-reply@iii.org.tw</font></u></a>					
+				<a href ="mailto:toms-no-reply@iii.org.tw"><font color="white" size="5px"><u>toms-no-reply@iii.org.tw</font></u></a>
+					
 				</ul>
 			</section>
 		</div>
@@ -139,6 +143,5 @@
 				href="http://unsplash.com/cc0">CC0</a>)
 		</div>
 	</div>
-         
   </body>
 </html>

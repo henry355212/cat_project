@@ -21,7 +21,7 @@ $link = create_connection();
 
 //檢查帳號是否有人申請
 $sql = "SELECT * FROM users Where account = '$account'";
-$result = execute_sql($link, "member", $sql);
+$result = execute_sql($link, "album", $sql);
 
 //如果帳號已經有人使用
 if (mysqli_num_rows($result) != 0) {
@@ -47,7 +47,7 @@ else {
             '$name', '$sex', $year, $month, $day, '$telephone', 
             '$cellphone', '$address', '$email', '$url', '$comment')";
 
-  $result = execute_sql($link, "member", $sql);
+  $result = execute_sql($link, "album", $sql);
 }
 
 //關閉資料連接	
@@ -82,8 +82,8 @@ mysqli_close($link);
         <ul>
           <li><a href="index.html">主頁</a></li>
           <li><a href="left-sidebar.html">品種介紹</a></li>
-          <li class="active"><a href="right-sidebar.html">曬貓區</a></li>
-          <li><a href="forum.html">貓奴討論區</a></li>
+          <li class="active"><a href="right-sidebar.php">曬貓區</a></li>
+          <li><a href="forum.php">貓奴討論區</a></li>
           <li><a href="no-sidebar.html">會員登入</a></li>
           <li><a href="related-websites.html">相關網站</a></li>
         </ul>
@@ -109,7 +109,7 @@ mysqli_close($link);
             <p align="center">恭喜您已經註冊成功了，您的資料如下：（請勿按重新整理鈕）<br>
               帳號：<font color="#FF0000"><?php echo $account ?></font><br>
               密碼：<font color="#FF0000"><?php echo $password ?></font><br>
-              請記下您的帳號及密碼，然後<a href="right-sidebar.html">登入網站</a>。
+              請記下您的帳號及密碼，然後<a href="right-sidebar.php">登入網站</a>。
             </p>
       </section>
     </div>
@@ -135,9 +135,10 @@ mysqli_close($link);
           <h2>聯絡我們</h2>
         </header>
         <ul class="contact">
-          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-          </svg>
+        <a href ="mailto:toms-no-reply@iii.org.tw"><img src="images/email.png" width="100px" height="100px"></a>			
+				</ul>
+				<a href ="mailto:toms-no-reply@iii.org.tw"><font color="white" size="5px"><u>toms-no-reply@iii.org.tw</font></u></a>
+
         </ul>
       </section>
     </div>
