@@ -41,7 +41,7 @@
       <ul>
 						<li><a href="index.html">主頁</a></li>
 						<li><a href="left-sidebar.html">品種介紹</a></li>
-						<li class="active"><a href="right-sidebar.html">曬貓區</a></li>
+						<li class="active"><a href="right-sidebar.php">曬貓區</a></li>
 						<li><a href="forum.php">貓奴討論區</a></li>
 						<li><a href="no-sidebar.html">會員登入</a></li>
 						<li><a href="related-websites.html">相關網站</a></li>
@@ -68,7 +68,7 @@
 				<!-- <header>
         <p align="center"><img src="images/head.jpg"></p> -->
     <?php
-      require_once("dbtools_news.inc.php");
+      require_once("dbtools.inc.php");
 			
       //指定每頁顯示幾筆記錄
       $records_per_page = 5;
@@ -85,7 +85,7 @@
       //執行SQL查詢
       // $sql = "SELECT id, author, subject, date FROM message ORDER BY date DESC";
       $sql = "SELECT id, name, subject, date FROM message ORDER BY date DESC";
-      $result = execute_sql($link, "news", $sql);
+      $result = execute_sql($link, "album", $sql);
 				
       //取得記錄數
       $total_records = mysqli_num_rows($result);

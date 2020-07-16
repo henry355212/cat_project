@@ -1,8 +1,8 @@
 <?php
-  require_once("dbtools_news.inc.php");
+  require_once("dbtools.inc.php");
 	
   //$author = $_POST["author"];
-  $author = $_POST["name"];
+  $name = $_POST["name"];
   $subject = $_POST["subject"]; 
   $content = $_POST["content"]; 
   $current_time = date("Y-m-d H:i:s");
@@ -13,8 +13,8 @@
   //執行SQL查詢
  // $sql = "INSERT INTO message(author, subject, content, date)
   $sql = "INSERT INTO message(name, subject, content, date)
-          VALUES ('$author', '$subject', '$content', '$current_time')";
-  $result = execute_sql($link, "news", $sql);
+          VALUES ('$name', '$subject', '$content', '$current_time')";
+  $result = execute_sql($link, "album", $sql);
 
   //關閉資料連接
   mysqli_close($link);

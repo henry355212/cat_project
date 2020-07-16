@@ -43,7 +43,7 @@
         <ul>
           <li><a href="index.html">主頁</a></li>
           <li><a href="left-sidebar.html">品種介紹</a></li>
-          <li class="active"><a href="right-sidebar.html">曬貓區</a></li>
+          <li class="active"><a href="right-sidebar.php">曬貓區</a></li>
           <li><a href="forum.php">貓奴討論區</a></li>
           <li><a href="no-sidebar.html">會員登入</a></li>
           <li><a href="related-websites.html">相關網站</a></li>
@@ -74,7 +74,7 @@
 
 
   <?php
-  require_once("dbtools_news.inc.php");
+  require_once("dbtools.inc.php");
 
   //取得要顯示之記錄
    $id = $_GET["id"];
@@ -84,7 +84,7 @@
 
   //執行SQL查詢
   $sql = "SELECT * FROM message WHERE id =$id";
-  $result = execute_sql($link, "news", $sql);
+  $result = execute_sql($link, "album", $sql);
 
   echo "<table width='800' align='center' cellpadding='3'>";
   echo "<tr height='40'><td colspan='2' align='center'
@@ -109,7 +109,7 @@
 
   //執行 SQL 命令
   $sql = "SELECT * FROM reply_message WHERE reply_id = $id";
-  $result = execute_sql($link, "news", $sql);
+  $result = execute_sql($link, "album", $sql);
 
   if (mysqli_num_rows($result) <> 0) {
     echo "<hr>";
