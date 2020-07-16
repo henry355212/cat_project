@@ -16,7 +16,8 @@
 
   <script type="text/javascript">
     function check_data() {
-      if (document.myForm.author.value.length == 0)
+      // if (document.myForm.author.value.length == 0)
+      if (document.myForm.name.value.length == 0)
         alert("作者欄位不可以空白哦！");
       else if (document.myForm.subject.value.length == 0)
         alert("主題欄位不可以空白哦！");
@@ -76,8 +77,8 @@
   require_once("dbtools_news.inc.php");
 
   //取得要顯示之記錄
-  $id = $_GET["id"];
-
+   $id = $_GET["id"];
+ 
   //建立資料連接
   $link = create_connection();
 
@@ -87,16 +88,17 @@
 
   echo "<table width='800' align='center' cellpadding='3'>";
   echo "<tr height='40'><td colspan='2' align='center'
-            bgcolor='#663333'><font color='white'>
+            bgcolor='#ADADAD'><font color='#4169E1'>
             <b>討論主題</b></font></td></tr>";
 
   //顯示原討論主題的內容
   while ($row = mysqli_fetch_assoc($result)) {
     echo "<tr>";
-    echo "<td bgcolor='#CCFFCC'>主題：" . $row["subject"] . "　";
-    echo "作者：" . $row["author"] . "　";
+    echo "<td bgcolor='#F0F0F0'>主題：" . $row["subject"] . "　";
+    // echo "作者：" . $row["author"] . "　";
+    echo "作者：" . $row["name"] . "　";
     echo "時間：" . $row["date"] . "</td></tr>";
-    echo "<tr height='40'><td bgcolor='CCFFFF'>";
+    echo "<tr height='40'><td bgcolor='E0E0E0'>";
     echo $row["content"] . "</td></tr>";
   }
 
@@ -120,7 +122,8 @@
     while ($row = mysqli_fetch_assoc($result)) {
       echo "<tr>";
       echo "<td bgcolor='#FFFF99'>主題：" . $row["subject"] . "　";
-      echo "作者：" . $row["author"] . "　";
+      // echo "作者：" . $row["author"] . "　";
+      echo "作者：" . $row["name"] . "　";
       echo "時間：" . $row["date"] . "</td></tr>";
       echo "<tr><td bgcolor='CCFFFF'>";
       echo $row["content"] . "</td></tr>";
@@ -133,26 +136,29 @@
   mysqli_free_result($result);
   mysqli_close($link);
   ?>
+  
   <hr>
   <form name="myForm" method="post" action="post_reply.php">
+    <!-- <input type="hidden" name="reply_id" value="<?php echo $id ?>"> -->
     <input type="hidden" name="reply_id" value="<?php echo $id ?>">
     <table border="0" width="800" align="center" cellspacing="0">
-      <tr bgcolor="#0084CA" align="center">
+      <tr bgcolor="#ADADAD" align="center">
         <td colspan="2">
           <font color="white">請在此輸入您的回覆</font>
         </td>
       </tr>
-      <tr bgcolor="#D9F2FF">
+      <tr bgcolor="#F0F0F0">
         <td width="15%">作者</td>
-        <td width="85%"><input name="author" type="text" size="50"></td>
+        <!-- <td width="85%"><input name="author" type="text" size="79"></td> -->
+        <td width="85%"><input name="name" type="text" size="79"></td>
       </tr>
-      <tr bgcolor="#84D7FF">
+      <tr bgcolor="#ADADAD">
         <td width="15%">主題</td>
-        <td width="85%"><input name="subject" type="text" size="50"></td>
+        <td width="85%"><input name="subject" type="text" size="79"></td>
       </tr>
-      <tr bgcolor="#D9F2FF">
+      <tr bgcolor="#F0F0F0">
         <td width="15%">內容</td>
-        <td width="85%"><textarea name="content" cols="50" rows="5"></textarea></td>
+        <td width="85%"><textarea name="content" cols="80" rows="5"></textarea></td>
       </tr>
       <tr>
         <td colspan="2" height="40" align="center">
@@ -162,7 +168,7 @@
       </tr>
     </table>
   </form>
-
+  <input type ="button" onclick="history.back()" value="回上一頁"></input>
 	</section>
 		</div>
 	</div>

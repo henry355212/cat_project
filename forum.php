@@ -14,7 +14,8 @@
     <script type="text/javascript">
       function check_data()
       {
-        if (document.myForm.author.value.length == 0)
+        // if (document.myForm.author.value.length == 0)
+        if (document.myForm.name.value.length == 0)
           alert("作者欄位不可以空白哦！");
         else if (document.myForm.subject.value.length == 0)
           alert("主題欄位不可以空白哦！");
@@ -82,7 +83,8 @@
       $link = create_connection();
 					
       //執行SQL查詢
-      $sql = "SELECT id, author, subject, date FROM message ORDER BY date DESC";
+      // $sql = "SELECT id, author, subject, date FROM message ORDER BY date DESC";
+      $sql = "SELECT id, name, subject, date FROM message ORDER BY date DESC";
       $result = execute_sql($link, "news", $sql);
 				
       //取得記錄數
@@ -100,22 +102,24 @@
       echo "<table height='200' width='800' cellspacing='2'>";
 			
       //使用 $bg 陣列來儲存表格背景色彩
-      $bg[0] = "#D9D9FF";
-      $bg[1] = "#FFCAEE";
-      $bg[2] = "#FFFFCC";
-      $bg[3] = "#B9EEB9";
-      $bg[4] = "#B9E9FF";					
+      $bg[0] = "#E0E0E0";
+      $bg[1] = "#F0F0F0";
+      $bg[2] = "#E0E0E0";
+      $bg[3] = "#F0F0F0";
+      $bg[4] = "#E0E0E0";					
 	  
       //顯示記錄
       $j = 1;
       while ($row = mysqli_fetch_assoc($result) and $j <= $records_per_page)
       {
         echo "<tr>";
-        // echo "<td width='120' align='center'><img src='" . mt_rand(0, 9) . ".gif'></td>";
-        echo "<td bgcolor='" . $bg[$j - 1] . "'>作者：" . $row["author"] . "<br>";
+        // echo "<td bgcolor='" . $bg[$j - 1] . "'>作者：" . $row["author"] . "<br>";
+        echo "<td bgcolor='" . $bg[$j - 1] . "'>作者：" . $row["name"] . "<br>";
         echo "主題：" . $row["subject"] . "<br>";
         echo "時間：" . $row["date"] . "<br>";
         echo "<a href='show_news.php?id=";
+        // echo "<a href='show_news.php?num=";
+        // echo $row["num"] . "'>閱讀與加入討論</a></td></tr>";	
         echo $row["id"] . "'>閱讀與加入討論</a></td></tr>";				
         $j++;
       }
@@ -145,21 +149,22 @@
       mysqli_close($link);
     ?> 		
     <hr>
-    <!- 顯示輸入新留言表單 -->
+    <!-- 顯示輸入新留言表單 --> 
     <form name="myForm" method="post" action="post.php">
       <table border="0" width="800" align="center" cellspacing="0">
-        <tr bgcolor="#0084CA" align="center">
+        <tr bgcolor="#ADADAD" align="center">
           <td colspan="2"><font color="white">請在此輸入新的討論</font></td>
         </tr>
-        <tr bgcolor="#D9F2FF">
+        <tr bgcolor="#F0F0F0">
           <td width="15%">作者</td>
-          <td width="85%"><input name="author" type="text" size="79"></td>
+          <!-- <td width="85%"><input name="author" type="text" size="79"></td> -->
+          <td width="85%"><input name="name" type="text" size="79"></td>
         </tr>
-        <tr bgcolor="#84D7FF">
+        <tr bgcolor="#ADADAD">
           <td width="15%">主題</td>
           <td width="85%"><input name="subject" type="text" size="79"></td>
         </tr>
-        <tr bgcolor="#D9F2FF">
+        <tr bgcolor="#F0F0F0">
           <td width="15%">內容</td>
           <td width="85%"><textarea name="content" cols="80" rows="5"></textarea></td>
         </tr>
