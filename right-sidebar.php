@@ -43,7 +43,11 @@
 		</div>
 		<div class="container">
 
-			<!-- Logo -->			
+			<!-- Logo -->
+			<div>
+			<font face="標楷體" font size="20px" font color="white">Meet My Kitty</font>
+				
+			</div>			
 		</div>
 	</div>
 	<!-- Header -->

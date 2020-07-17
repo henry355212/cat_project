@@ -35,9 +35,7 @@
 		<div class="container">
 
 			<!-- Logo -->
-			<div id="logo">
-				<font face="標楷體" font size="20px" font color="white">會員管理系統</font>
-			</div>
+			
 		</div>
 	</div>
 	<!-- Header -->

@@ -65,7 +65,7 @@ if ($passed != "TRUE") {
             <a href="modify.php">修改會員資料</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="delete.php">刪除會員資料</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="right-sidebar.php">曬貓區</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="forum.html">貓奴討論區</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="forum.php">貓奴討論區</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="logout.php">登出網站</a>
           </p>
         </header>

@@ -83,7 +83,7 @@
 
 			<!-- Logo -->
 			<div id="logo">
-				<font face="標楷體" font size="20px" font color="white">會員登入</font>
+				<font face="標楷體" font size="20px" font color="white">Member Login</font>
 			</div>
 		</div>
 	</div>
