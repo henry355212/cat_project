@@ -54,7 +54,7 @@
 
       <!-- Logo -->
       <div id="logo">
-        <font face="標楷體" font size="20px" font color="white">貓奴討論區</font>
+        <font face="標楷體" font size="20px" font color="white">Cat Lovers Forum</font>
       </div>
     </div>
   </div>
